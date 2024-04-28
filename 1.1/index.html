@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Замовлення меблів</title>
+</head>
+<body>
+    <h1>Замовлення меблів</h1>
+    <form action="order.php" method="post" name="form" onsubmit="return checkForm()">
+        <label for="sort">Вид виробу: </label>
+        <select id="sort" name="sort" onblur="return check(this)">
+            <option value=""></option>
+            <option>Шафа</option>
+            <option>Стіл</option>
+            <option>Сервант</option>
+            <option>Набір стільців</option>
+        </select> 
+        <br><br>
+
+        <label for="material">Матеріал: </label>
+        <select id="material" name="material" onblur="return check(this)">
+            <option value=""></option>
+            <option value="Дуб">Дуб</option>
+            <option value="Горіх">Горіх</option>
+            <option value="Бук">Бук</option>
+        </select> 
+        <br><br>
+
+        <label for="amount">Кількість: </label>
+        <input type="number" id="amount" name="amount" min="1" onblur="return check(this)">
+        <br><br>
+
+        <input type="submit">
+    </form>
+
+    <script>
+        function check(field){
+            if (field.value == ""){
+                alert("Необхідно заповнити поле " + field.name);
+                return false;
+            }
+            return true;
+        }
+
+        function checkForm(){
+            var sort = document.getElementById("sort").value;
+            var material = document.getElementById("material").value;
+            var amount = document.getElementById("amount").value;
+
+            if (sort == "" || material == "" || amount == ""){
+                alert("Не всі поля заповнені.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

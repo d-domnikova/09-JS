@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тригонометричні функції</title>
+</head>
+<body>
+    <h1>Тригонометричні функції</h1>
+    <p>Кут повинен бути більше нуля та менше 90 градусів</p>
+    <form>
+        <label for="angle">Кут в градусах: </label>
+        <input id="angle" min="0" max="90" type="number">
+        <br><br>
+        <label for="function">Функція: </label>
+        <select id="function">
+            <option value="" disabled selected></option>
+            <option value="sin">sin</option>
+            <option value="cos">cos</option>
+            <option value="tan">tan</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit" onclick="return calculateValue();">
+        <br><br>
+        <div id="calculationResult"></div>
+    </form>
+
+    <script>
+        function calculateValue(){
+            var angle = document.getElementById("angle").value;
+            var functionName = document.getElementById("function").value;
+            var radians = angle * (Math.PI/180);
+            
+            var str = "Math." + functionName + "(" + radians + ")";
+            result = eval(str).toFixed(2);
+
+            var p = document.createElement("p")
+            p.innerHTML = functionName + "(" + angle + ") = " + result; 
+            document.getElementById("calculationResult").appendChild(p);
+
+            return false;
+        }
+    </script>
+</body>
+</html>
